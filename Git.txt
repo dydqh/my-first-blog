@@ -4,6 +4,8 @@ git저장소 만들기 , 파일을 새로 추적하기 : 	git add ~
 파일 버전 관리 시작 : 			git commit -m '~'
 기존 저장소 Clone하기 : 			git clone https://~
 리모트 저장소 확인 :			git remote (URL보기 : git remote -v)
+리모트 저장소 추가하기 : 			git remote add <name> URL
+리모트 저장소 삭제하기 : 			git remote remove <name>
 파일의 상태 확인하기 :			git status
 파일의 상태 짤막하게 확인하기 : 		git status -s / git status --short  (미추적 ?? / Staged 새로생성 A / 수정 M)
 관리할 필요가 없는 파일 무시 : 		.gitignore 파일 안에 파일 패턴 적기
@@ -50,7 +52,17 @@ stat중 수정한 파일, 추가된 라인, 삭제된 라인 :		--shortstat
 리모트 저장소에서 데이터 가져오기 : 		git fetch <remote>
 리모트 저장소에 push하기 :			git push origin(리모트 저장소 이름) master(브랜치 이름)
 리모트 저장소 살펴보기 : 			git remote show origin
-리모트 저장소 이름 바꾸기 : 		git remote rename pb paul
+리모트 저장소 이름 바꾸기 : 		git remote rename <원래이름> <바꿀이름>
+태그 조회하기 :				git tag
+아노테이티드 태그 만들기 (자세한 정보) :	git tag -a v<number>.<number> -m "name"		
+라이트웨이트 태그 만들기 (정보 유지 불필요) :	git tag v<number>.<number>
+
+					git log --pretty=oneline으로 커밋 히스토리 확인 후
+예전 커밋 태그하기 :			git tag -a v<number>.<number> <노란색 앞글자부터 7글자정도>
+태그 확인하기 :				git show v1.2
+태그 리모트 서버에 전송하기 :		git push <name> v1.2 (여러개 : git push <name> --tags)
+브랜치 만들고 태그 Checkout하기 :		git checkout -b version2 v1.2
+브랜치 이동하기 :				git checkout <name>
 
 
 
@@ -73,5 +85,5 @@ Merge 할 때 충돌난 상태의 파일을 Resolve 상태로 만들때도 git a
 add의 의미는 파일을 추가한다기 보다는 다음 커밋에 추가한다고 받아들이는게 좋다.
 
 git commit 명령을 통해 커밋되는 파일은 마지막으로 git add 명령을 실행했을 때의 버전이 커밋된다.
-따라서 git add 후에 파일을 재수정하면 다시 git add명령을 수행하여 최신 버전을 Staged 상태로 만들어야 한다.
+따라서 git add 후에 파일을 재수정하면 다시 git add명령을 수행하여 최신 버전을 Staged 상태로 만들어야 한다. 
 
